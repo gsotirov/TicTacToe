@@ -1,0 +1,31 @@
+section.page-play
+    p
+        a(href="/") < Back to Start
+
+    p.alert(data-hook="message")
+    
+    div.clearfix
+        #gameField.gameField.pull-left
+            each row, yPos in gameField
+                .gameRow.clearfix
+                    each field, xPos in row
+                        .gameCell.is-empty(data-ypos=yPos, data-xpos=xPos)
+
+        table.table.table-bordered.pull-right
+            thead
+                tr
+                    th(class="sign-#{player0.mark}")
+                    th= player0.name
+                    th Draws
+                    th= player1.name
+                    th(class="sign-#{player1.mark}")
+            tbody
+                tr
+                    td(data-hook="score-player0" colspan="2")= player0.score
+                    td(data-hook="draw-count")= drawCount
+                    td(data-hook="score-player1" colspan="2")= player1.score
+
+    p.text-center
+        button#newGame.btn.btn-primary New Game
+
+    
