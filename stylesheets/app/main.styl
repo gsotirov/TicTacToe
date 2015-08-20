@@ -4,8 +4,6 @@
 @import '../_mixins'
 @import 'footer'
 
-
-// your styles here:
 body
   background: white
 
@@ -50,9 +48,9 @@ body
             border-radius: 5px
             background: #fff
 
-#gameField
-    width: 300px
-    margin: 0 50px 50px 0
+#game-field
+    padding-right: 15px
+    border-right: 1px solid #efefef
 
 .hold
     margin: 10px auto
@@ -60,17 +58,17 @@ body
     padding-bottom: 10px
     float: none
     
-.gameCell
-    width: 100px
-    height: 100px
-    border: 1px solid #d4d4d4
+.game-cell
+    width: 110px
+    height: 110px
+    border: 5px solid #9F1313
     float: left
     cursor: pointer
     font-size: 40px
     text-align: center
     line-height: 100px
 
-.gameCell
+.game-cell
     &:before
         display: block
         width: 100%
@@ -79,16 +77,28 @@ body
         text-align: center
         font-size: 60px
     &.sign-0:before
-        background: rgba(34, 120, 167,0.3)
-        color: #333
-        content: sign-zero
+        background: url('images/zero.png')
+        background-size: 100px 100px
+        content:''
 
     &.sign-1:before
-        background: rgba(34, 167, 100, 0.3)
-        color: #000
-        content: sign-cross
+        background: url('images/cross.png')
+        background-size: 100px 100px
+        content:''
+
+.game-cell[data-ypos="0"]
+    border-top: none
+    
+.game-cell[data-ypos="2"]
+    border-bottom: none
+    
+.game-cell[data-xpos="0"]
+    border-left: none
+    
+.game-cell[data-xpos="2"]
+    border-right: none
         
-.gameCell.is-empty
+.game-cell.is-empty
     content: ''
     
 // Forms
@@ -123,11 +133,16 @@ label
 .stats
     ul
         list-style-type: none
-        padding: 0        
+        padding: 5px       
         margin: 0
 
 .stats
-    ul
+    .player-info
+        padding-bottom: 5px
+        border-bottom: 1px solid #efefef
+        
+.stats
+    ul.player-info
         li
             padding-left: 40px
             height: 35px
@@ -153,14 +168,14 @@ label
                     text-align: center
                     font-size: 12px
                 &.sign-0:before
-                    background: rgba(34, 120, 167,0.3)
-                    color: #333
-                    content: sign-zero
+                    background: url('images/zero.png')
+                    background-size: 30px
+                    content:''
 
                 &.sign-1:before
-                    background: rgba(34, 167, 100, 0.3)
-                    color: #000
-                    content: sign-cross
+                    background: url('images/cross.png')
+                    background-size: 30px
+                    content:''
             
 .score
     li

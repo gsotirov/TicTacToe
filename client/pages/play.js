@@ -19,7 +19,7 @@ module.exports = PageView.extend({
     
     // Attaches events to the gameField for setting a sign on player click and for starting a NewGame.
     events: {
-        'click #gameField .gameCell.is-empty' : 'setSign',
+        'click #game-field .game-cell.is-empty' : 'setSign',
         'click #newGame' : 'newGame'
     },
     
@@ -188,7 +188,8 @@ module.exports = PageView.extend({
     },
     handleDraw: function () {
         this.isGameComplete = true;
-        this.drawCount++;
+        app.drawCount++;
+        this.drawCount = app.drawCount;
         
         var scoreBoard = this.queryByHook('draw-count');
         scoreBoard.innerText = this.drawCount;

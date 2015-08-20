@@ -4,13 +4,13 @@ section.page-play
 
     span.alert(data-hook="message")
     div.hold.clearfix.col-md-6
-        #gameField.gameField.pull-left
+        #game-field.game-field.pull-left
             each row, yPos in gameField
                 .gameRow.clearfix
                     each field, xPos in row
-                        .gameCell.is-empty(data-ypos=yPos, data-xpos=xPos)
+                        .game-cell.is-empty(data-ypos=yPos, data-xpos=xPos)
         .stats.pull-left
-            ul
+            ul.player-info
                 li.relative
                     span(class="absolute mk sign-#{player0.mark}")
                     span.player-name=player0.name

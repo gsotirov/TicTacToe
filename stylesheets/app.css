@@ -75,9 +75,9 @@ body {
   border-radius: 5px;
   background: #fff;
 }
-#gameField {
-  width: 300px;
-  margin: 0 50px 50px 0;
+#game-field {
+  padding-right: 15px;
+  border-right: 1px solid #efefef;
 }
 .hold {
   margin: 10px auto;
@@ -85,17 +85,17 @@ body {
   padding-bottom: 10px;
   float: none;
 }
-.gameCell {
-  width: 100px;
-  height: 100px;
-  border: 1px solid #d4d4d4;
+.game-cell {
+  width: 110px;
+  height: 110px;
+  border: 5px solid #9f1313;
   float: left;
   cursor: pointer;
   font-size: 40px;
   text-align: center;
   line-height: 100px;
 }
-.gameCell:before {
+.game-cell:before {
   display: block;
   width: 100%;
   height: 100%;
@@ -103,17 +103,29 @@ body {
   text-align: center;
   font-size: 60px;
 }
-.gameCell.sign-0:before {
-  background: rgba(34,120,167,0.3);
-  color: #333;
-  content: "O";
+.game-cell.sign-0:before {
+  background: url("images/zero.png");
+  background-size: 100px 100px;
+  content: '';
 }
-.gameCell.sign-1:before {
-  background: rgba(34,167,100,0.3);
-  color: #000;
-  content: "X";
+.game-cell.sign-1:before {
+  background: url("images/cross.png");
+  background-size: 100px 100px;
+  content: '';
 }
-.gameCell.is-empty {
+.game-cell[data-ypos="0"] {
+  border-top: none;
+}
+.game-cell[data-ypos="2"] {
+  border-bottom: none;
+}
+.game-cell[data-xpos="0"] {
+  border-left: none;
+}
+.game-cell[data-xpos="2"] {
+  border-right: none;
+}
+.game-cell.is-empty {
   content: '';
 }
 #form-names {
@@ -142,10 +154,14 @@ label {
 }
 .stats ul {
   list-style-type: none;
-  padding: 0;
+  padding: 5px;
   margin: 0;
 }
-.stats ul li {
+.stats .player-info {
+  padding-bottom: 5px;
+  border-bottom: 1px solid #efefef;
+}
+.stats ul.player-info li {
   padding-left: 40px;
   height: 35px;
   line-height: 35px;
@@ -169,14 +185,14 @@ label {
   font-size: 12px;
 }
 .stats ul li .mk.sign-0:before {
-  background: rgba(34,120,167,0.3);
-  color: #333;
-  content: "O";
+  background: url("images/zero.png");
+  background-size: 30px;
+  content: '';
 }
 .stats ul li .mk.sign-1:before {
-  background: rgba(34,167,100,0.3);
-  color: #000;
-  content: "X";
+  background: url("images/cross.png");
+  background-size: 30px;
+  content: '';
 }
 .score li span {
   height: 25px;

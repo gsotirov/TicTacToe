@@ -38,7 +38,7 @@
         var jade_interp;
         var locals_for_with = locals || {};
         (function(drawCount, gameField, player0, player1, undefined) {
-            buf.push('<section class="page-play"><p><a href="/" class="btn btn-primary">< Back to Start</a></p><span data-hook="message" class="alert"></span><div class="hold clearfix col-md-6"><div id="gameField" class="gameField pull-left">');
+            buf.push('<section class="page-play"><p><a href="/" class="btn btn-primary">< Back to Start</a></p><span data-hook="message" class="alert"></span><div class="hold clearfix col-md-6"><div id="game-field" class="game-field pull-left">');
             (function() {
                 var $obj = gameField;
                 if ("number" == typeof $obj.length) {
@@ -50,14 +50,14 @@
                             if ("number" == typeof $obj.length) {
                                 for (var xPos = 0, $l = $obj.length; xPos < $l; xPos++) {
                                     var field = $obj[xPos];
-                                    buf.push("<div" + jade.attr("data-ypos", yPos, true, false) + jade.attr("data-xpos", xPos, true, false) + ' class="gameCell is-empty"></div>');
+                                    buf.push("<div" + jade.attr("data-ypos", yPos, true, false) + jade.attr("data-xpos", xPos, true, false) + ' class="game-cell is-empty"></div>');
                                 }
                             } else {
                                 var $l = 0;
                                 for (var xPos in $obj) {
                                     $l++;
                                     var field = $obj[xPos];
-                                    buf.push("<div" + jade.attr("data-ypos", yPos, true, false) + jade.attr("data-xpos", xPos, true, false) + ' class="gameCell is-empty"></div>');
+                                    buf.push("<div" + jade.attr("data-ypos", yPos, true, false) + jade.attr("data-xpos", xPos, true, false) + ' class="game-cell is-empty"></div>');
                                 }
                             }
                         }).call(this);
@@ -74,14 +74,14 @@
                             if ("number" == typeof $obj.length) {
                                 for (var xPos = 0, $l = $obj.length; xPos < $l; xPos++) {
                                     var field = $obj[xPos];
-                                    buf.push("<div" + jade.attr("data-ypos", yPos, true, false) + jade.attr("data-xpos", xPos, true, false) + ' class="gameCell is-empty"></div>');
+                                    buf.push("<div" + jade.attr("data-ypos", yPos, true, false) + jade.attr("data-xpos", xPos, true, false) + ' class="game-cell is-empty"></div>');
                                 }
                             } else {
                                 var $l = 0;
                                 for (var xPos in $obj) {
                                     $l++;
                                     var field = $obj[xPos];
-                                    buf.push("<div" + jade.attr("data-ypos", yPos, true, false) + jade.attr("data-xpos", xPos, true, false) + ' class="gameCell is-empty"></div>');
+                                    buf.push("<div" + jade.attr("data-ypos", yPos, true, false) + jade.attr("data-xpos", xPos, true, false) + ' class="game-cell is-empty"></div>');
                                 }
                             }
                         }).call(this);
@@ -89,7 +89,7 @@
                     }
                 }
             }).call(this);
-            buf.push('</div><div class="stats pull-left"><ul><li class="relative"><span' + jade.cls([ "absolute mk sign-" + player0.mark + "" ], [ true ]) + '></span><span class="player-name">' + jade.escape(null == (jade_interp = player0.name) ? "" : jade_interp) + '</span></li><li class="relative"><span' + jade.cls([ "absolute mk sign-" + player1.mark + "" ], [ true ]) + '></span><span class="player-name">' + jade.escape(null == (jade_interp = player1.name) ? "" : jade_interp) + '</span></li></ul><ul class="score"><li><span class="inline-block">' + jade.escape((jade_interp = player0.name) == null ? "" : jade_interp) + '\'s wins:</span><span data-hook="score-player0" class="inline-block">' + jade.escape(null == (jade_interp = player0.score) ? "" : jade_interp) + '</span></li><li><span class="inline-block">Draws</span><span data-hook="draw-count" class="inline-block">' + jade.escape(null == (jade_interp = drawCount) ? "" : jade_interp) + '</span></li><li><span class="inline-block">' + jade.escape((jade_interp = player1.name) == null ? "" : jade_interp) + '\'s wins:</span><span data-hook="score-player1" class="inline-block">' + jade.escape(null == (jade_interp = player1.score) ? "" : jade_interp) + '</span></li></ul><p class="text-center"><button id="newGame" class="btn btn-primary">New Game</button></p></div></div></section>');
+            buf.push('</div><div class="stats pull-left"><ul class="player-info"><li class="relative"><span' + jade.cls([ "absolute mk sign-" + player0.mark + "" ], [ true ]) + '></span><span class="player-name">' + jade.escape(null == (jade_interp = player0.name) ? "" : jade_interp) + '</span></li><li class="relative"><span' + jade.cls([ "absolute mk sign-" + player1.mark + "" ], [ true ]) + '></span><span class="player-name">' + jade.escape(null == (jade_interp = player1.name) ? "" : jade_interp) + '</span></li></ul><ul class="score"><li><span class="inline-block">' + jade.escape((jade_interp = player0.name) == null ? "" : jade_interp) + '\'s wins:</span><span data-hook="score-player0" class="inline-block">' + jade.escape(null == (jade_interp = player0.score) ? "" : jade_interp) + '</span></li><li><span class="inline-block">Draws</span><span data-hook="draw-count" class="inline-block">' + jade.escape(null == (jade_interp = drawCount) ? "" : jade_interp) + '</span></li><li><span class="inline-block">' + jade.escape((jade_interp = player1.name) == null ? "" : jade_interp) + '\'s wins:</span><span data-hook="score-player1" class="inline-block">' + jade.escape(null == (jade_interp = player1.score) ? "" : jade_interp) + '</span></li></ul><p class="text-center"><button id="newGame" class="btn btn-primary">New Game</button></p></div></div></section>');
         }).call(this, "drawCount" in locals_for_with ? locals_for_with.drawCount : typeof drawCount !== "undefined" ? drawCount : undefined, "gameField" in locals_for_with ? locals_for_with.gameField : typeof gameField !== "undefined" ? gameField : undefined, "player0" in locals_for_with ? locals_for_with.player0 : typeof player0 !== "undefined" ? player0 : undefined, "player1" in locals_for_with ? locals_for_with.player1 : typeof player1 !== "undefined" ? player1 : undefined, "undefined" in locals_for_with ? locals_for_with.undefined : typeof undefined !== "undefined" ? undefined : undefined);
         return buf.join("");
     };
