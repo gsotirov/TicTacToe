@@ -1,15 +1,29 @@
+/* ===================================
+Start page
+====================================== */
+
 var PageView = require('./base');
 var templates = require('../templates');
 var PlayerForm = require('../forms/playerForm.js');
 var PlayerCollection = require('../models/player-collection.js');
 var Player = require('../models/player.js');
 
-
+/* ===================================
+Extends the base view.
+    - Sets the page title
+    - Renders the Player name form
+    
+On form submit, adds Player 1 and 
+Player 2 to the main app object 
+for later reference, then redirects 
+to the Play Page.
+====================================== */
 module.exports = PageView.extend({
     pageTitle: 'Start',
     autoRender: true,
     template: templates.pages.start,
     render: function () {
+        
         this.renderWithTemplate();
         
         this.form = new PlayerForm({

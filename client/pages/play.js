@@ -1,14 +1,23 @@
+/* ======================================
+Play page - handles the playground :)
+========================================= */
+
 var PageView = require('./base');
 var templates = require('../templates');
 
-
+/* ======================================
+Extends the Main view and creates 
+methods for handling the playground.
+========================================= */
 module.exports = PageView.extend({
     pageTitle: 'Play',
     template: templates.pages.play,
-    
+    // Sets an initial value for the activePlayer. It changes depending on which player's turn is.
     activePlayer: 0,
+    // Counts the moves made, so Draw can be handled properly.
     moveCount: 0,
     
+    // Attaches events to the gameField for setting a sign on player click and for starting a NewGame.
     events: {
         'click #gameField .gameCell.is-empty' : 'setSign',
         'click #newGame' : 'newGame'

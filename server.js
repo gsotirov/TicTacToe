@@ -91,7 +91,6 @@ new Moonboots({
     server: app
 });
 
-
 // listen for incoming http requests on the port as specified in our config
 app.listen(config.http.port);
 console.log('Tic Tac Toe is running at: http://localhost:' + config.http.port);

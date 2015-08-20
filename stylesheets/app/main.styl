@@ -9,20 +9,56 @@
 body
   background: white
 
+.inline-block
+    display: inline-block
+
+// Positioning
+.relative
+    position: relative
+
+.absolute
+    position: absolute
+    
+// Alerts
 .alert
     text-align: center
-    font-size: 22px;
+    font-size: 18px;
+    display: block
+    padding: 5px 20px
+    margin-bottom: 15px
 
-.page-title
-    font-size: 42px
+.page-title 
+    display: block
+    min-height: 50px
+    line-height: 50px
     text-align: center
+    margin-bottom: 50px
+    border-bottom: 1px solid #d4d4d4
+    
+.page-title 
+    .inner
+        width: 100%
+        height: 50px
+        bottom: -25px
+        text-align: center
+        
+.page-title
+    .inner
+        .title-text
+            padding: 5px 20px
+            border-bottom: 2px solid #333
+            border-radius: 5px
+            background: #fff
 
 #gameField
     width: 300px
     margin: 0 50px 50px 0
 
-table
-    width: 750px !important
+.hold
+    margin: 10px auto
+    padding-top: 10px
+    padding-bottom: 10px
+    float: none
     
 .gameCell
     width: 100px
@@ -51,49 +87,86 @@ table
         background: rgba(34, 167, 100, 0.3)
         color: #000
         content: sign-cross
-
-th
-    &:before
-        display: block
-        width: 100%
-        height: 100%
-        line-height: 35px
-        text-align: center
-        font-size: 30px
-    &.sign-0:before
-        background: rgba(34, 120, 167,0.3)
-        color: #333
-        content: sign-zero
-
-    &.sign-1:before
-        background: rgba(34, 167, 100, 0.3)
-        color: #000
-        content: sign-cross
-
+        
 .gameCell.is-empty
     content: ''
     
-.gameCell.sign-zero
-    background: rgba(34, 120, 167,0.3)
-    color: #333
-    content: sign-zero
+// Forms
 
-.gameCell.sign-cross
-    background: rgba(34, 167, 100, 0.3)
-    color: #000
-    content: sign-cross
+#form-names
+    width: 360px
+    display: block
+    margin: 50px auto
+ 
+label
+    margin-bottom: 1px
     
-   
-td,th
+.form-control
+    border-bottom: 1px solid #333 !important
+    border-radius: 5px !important
+    border-top: none !important
+    border-left: none !important
+    border-right: none !important
+    box-shadow: none !important
     text-align: center
-    line-height: 35px
     
-th
-    padding 0 !important
+.btn-success.big
+    width: 120px
+    height: 40px
+    text-shadow: 1px 1px 1px #333
+    display: block
+    margin: 5px auto
     
-    
-    
-    
-    
-    
-    
+
+// Stats
+
+.stats
+    ul
+        list-style-type: none
+        padding: 0        
+        margin: 0
+
+.stats
+    ul
+        li
+            padding-left: 40px
+            height: 35px
+            line-height: 35px
+            display: block
+
+.stats
+    ul
+        li
+            .mk
+                display: block
+                top: 2.5px
+                left: 2.5px
+                width: 30px
+                height: 30px
+                border-radius: 100px
+                overflow: hidden
+                &:before
+                    display: block
+                    width: 100%
+                    height: 100%
+                    line-height: 30px
+                    text-align: center
+                    font-size: 12px
+                &.sign-0:before
+                    background: rgba(34, 120, 167,0.3)
+                    color: #333
+                    content: sign-zero
+
+                &.sign-1:before
+                    background: rgba(34, 167, 100, 0.3)
+                    color: #000
+                    content: sign-cross
+            
+.score
+    li
+        span
+            height: 25px
+            line-height: 25px
+            
+            &:nth-child(2)
+                margin-left: 10px

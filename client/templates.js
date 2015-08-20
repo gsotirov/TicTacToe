@@ -18,7 +18,7 @@
 
     // body.jade compiled template
     templatizer["body"] = function tmpl_body() {
-        return '<body><div class="container"><h2 class="page-title">Tic Tac Toe</h2><main data-hook="page-container"></main></div></body>';
+        return '<body><div class="container"><h2 class="page-title relative clearfix"><div class="inner absolute"><span class="title-text">Tic Tac Toe</span></div></h2><main data-hook="page-container"></main></div></body>';
     };
 
     // head.jade compiled template
@@ -28,7 +28,7 @@
 
     // includes/formInput.jade compiled template
     templatizer["includes"]["formInput"] = function tmpl_includes_formInput() {
-        return '<div class="form-group"><label data-hook="label"></label><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
+        return '<div class="form-group"><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
     };
 
     // pages/play.jade compiled template
@@ -38,7 +38,7 @@
         var jade_interp;
         var locals_for_with = locals || {};
         (function(drawCount, gameField, player0, player1, undefined) {
-            buf.push('<section class="page-play"><p><a href="/">< Back to Start</a></p><p data-hook="message" class="alert"></p><div class="clearfix"><div id="gameField" class="gameField pull-left">');
+            buf.push('<section class="page-play"><p><a href="/" class="btn btn-primary">< Back to Start</a></p><span data-hook="message" class="alert"></span><div class="hold clearfix col-md-6"><div id="gameField" class="gameField pull-left">');
             (function() {
                 var $obj = gameField;
                 if ("number" == typeof $obj.length) {
@@ -89,14 +89,14 @@
                     }
                 }
             }).call(this);
-            buf.push('</div><table class="table table-bordered pull-right"><thead><tr><th' + jade.cls([ "sign-" + player0.mark + "" ], [ true ]) + "></th><th>" + jade.escape(null == (jade_interp = player0.name) ? "" : jade_interp) + "</th><th>Draws</th><th>" + jade.escape(null == (jade_interp = player1.name) ? "" : jade_interp) + "</th><th" + jade.cls([ "sign-" + player1.mark + "" ], [ true ]) + '></th></tr></thead><tbody><tr><td data-hook="score-player0" colspan="2">' + jade.escape(null == (jade_interp = player0.score) ? "" : jade_interp) + '</td><td data-hook="draw-count">' + jade.escape(null == (jade_interp = drawCount) ? "" : jade_interp) + '</td><td data-hook="score-player1" colspan="2">' + jade.escape(null == (jade_interp = player1.score) ? "" : jade_interp) + '</td></tr></tbody></table></div><p class="text-center"><button id="newGame" class="btn btn-primary">New Game</button></p></section>');
+            buf.push('</div><div class="stats pull-left"><ul><li class="relative"><span' + jade.cls([ "absolute mk sign-" + player0.mark + "" ], [ true ]) + '></span><span class="player-name">' + jade.escape(null == (jade_interp = player0.name) ? "" : jade_interp) + '</span></li><li class="relative"><span' + jade.cls([ "absolute mk sign-" + player1.mark + "" ], [ true ]) + '></span><span class="player-name">' + jade.escape(null == (jade_interp = player1.name) ? "" : jade_interp) + '</span></li></ul><ul class="score"><li><span class="inline-block">' + jade.escape((jade_interp = player0.name) == null ? "" : jade_interp) + '\'s wins:</span><span data-hook="score-player0" class="inline-block">' + jade.escape(null == (jade_interp = player0.score) ? "" : jade_interp) + '</span></li><li><span class="inline-block">Draws</span><span data-hook="draw-count" class="inline-block">' + jade.escape(null == (jade_interp = drawCount) ? "" : jade_interp) + '</span></li><li><span class="inline-block">' + jade.escape((jade_interp = player1.name) == null ? "" : jade_interp) + '\'s wins:</span><span data-hook="score-player1" class="inline-block">' + jade.escape(null == (jade_interp = player1.score) ? "" : jade_interp) + '</span></li></ul><p class="text-center"><button id="newGame" class="btn btn-primary">New Game</button></p></div></div></section>');
         }).call(this, "drawCount" in locals_for_with ? locals_for_with.drawCount : typeof drawCount !== "undefined" ? drawCount : undefined, "gameField" in locals_for_with ? locals_for_with.gameField : typeof gameField !== "undefined" ? gameField : undefined, "player0" in locals_for_with ? locals_for_with.player0 : typeof player0 !== "undefined" ? player0 : undefined, "player1" in locals_for_with ? locals_for_with.player1 : typeof player1 !== "undefined" ? player1 : undefined, "undefined" in locals_for_with ? locals_for_with.undefined : typeof undefined !== "undefined" ? undefined : undefined);
         return buf.join("");
     };
 
     // pages/start.jade compiled template
     templatizer["pages"]["start"] = function tmpl_pages_start() {
-        return '<section class="page-start"><p>Hello to Tic Tac Toe</p><p>Please enter your names bellow to get the party started :)</p><form data-hook="names-form"><fieldset data-hook="field-container"></fieldset><button type="submit" class="btn btn-primary">Let\'s Go!</button></form></section>';
+        return '<section class="page-start"><p class="text-center">Welcome to Tic Tac Toe</p><p class="text-center">Please enter your names bellow to get the party started :)</p><form id="form-names" data-hook="names-form"><fieldset data-hook="field-container"></fieldset><button type="submit" class="btn btn-success big">Let\'s Go!</button></form></section>';
     };
 
     return templatizer;

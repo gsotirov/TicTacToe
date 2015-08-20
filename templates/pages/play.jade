@@ -1,31 +1,37 @@
 section.page-play
     p
-        a(href="/") < Back to Start
+        a.btn.btn-primary(href="/") < Back to Start
 
-    p.alert(data-hook="message")
-    
-    div.clearfix
+    span.alert(data-hook="message")
+    div.hold.clearfix.col-md-6
         #gameField.gameField.pull-left
             each row, yPos in gameField
                 .gameRow.clearfix
                     each field, xPos in row
                         .gameCell.is-empty(data-ypos=yPos, data-xpos=xPos)
+        .stats.pull-left
+            ul
+                li.relative
+                    span(class="absolute mk sign-#{player0.mark}")
+                    span.player-name=player0.name
+                li.relative
+                    span(class="absolute mk sign-#{player1.mark}")
+                    span.player-name=player1.name
+                    
+            ul.score
+                li
+                    span.inline-block #{player0.name}'s wins:
+                    span.inline-block(data-hook="score-player0")= player0.score
+                li
+                    span.inline-block Draws
+                    span.inline-block(data-hook="draw-count")= drawCount
+                li
+                    span.inline-block #{player1.name}'s wins:
+                    span.inline-block(data-hook="score-player1")= player1.score
+                
+            p.text-center
+                button#newGame.btn.btn-primary New Game
+                    
 
-        table.table.table-bordered.pull-right
-            thead
-                tr
-                    th(class="sign-#{player0.mark}")
-                    th= player0.name
-                    th Draws
-                    th= player1.name
-                    th(class="sign-#{player1.mark}")
-            tbody
-                tr
-                    td(data-hook="score-player0" colspan="2")= player0.score
-                    td(data-hook="draw-count")= drawCount
-                    td(data-hook="score-player1" colspan="2")= player1.score
-
-    p.text-center
-        button#newGame.btn.btn-primary New Game
 
     
