@@ -8,6 +8,8 @@ var config = require('clientconfig');
 var Router = require('./router');
 var MainView = require('./views/main');
 var domReady = require('domready');
+var Player = require('./models/player');
+// var PlayerCollection = require('./models/player-collection');
 
 // attach our app to `window` so we can
 // easily access it from the console.

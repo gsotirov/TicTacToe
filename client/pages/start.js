@@ -5,8 +5,8 @@ Start page
 var PageView = require('./base');
 var templates = require('../templates');
 var PlayerForm = require('../forms/playerForm.js');
-var PlayerCollection = require('../models/player-collection.js');
-var Player = require('../models/player.js');
+var PlayerCollection = require('../models/player-collection');
+var Player = require('../models/player');
 
 /* ===================================
 Extends the base view.
@@ -33,6 +33,7 @@ module.exports = PageView.extend({
             },
             el: this.el,
             submitCallback: function (data) {
+                
                 var players = new PlayerCollection();
                 
                 players.add(new Player({

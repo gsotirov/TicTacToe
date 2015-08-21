@@ -31,6 +31,16 @@
         return '<div class="form-group"><div data-hook="message-container"><div data-hook="message-text" class="alert alert-danger"></div></div><input class="form-control"/></div>';
     };
 
+    // includes/player.jade compiled template
+    templatizer["includes"]["player"] = function tmpl_includes_player() {
+        return '<li class="clearfix"><span data-hook="name" class="name pull-left"></span><span data-hook="score" class="score pull-right"></span></li>';
+    };
+
+    // pages/leaderboard.jade compiled template
+    templatizer["pages"]["leaderboard"] = function tmpl_pages_leaderboard() {
+        return '<h1>LeaderBoard<ul class="players-list"></ul></h1>';
+    };
+
     // pages/play.jade compiled template
     templatizer["pages"]["play"] = function tmpl_pages_play(locals) {
         var buf = [];

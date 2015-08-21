@@ -2,12 +2,14 @@ var app = require('ampersand-app');
 var Router = require('ampersand-router');
 var StartPage = require('./pages/start');
 var PlayPage = require('./pages/play');
+var LeaderBoardPage = require('./pages/leaderboard');
 
 
 module.exports = Router.extend({
     routes: {
         '': 'start',
         'play': 'play',
+        'leaderboard': 'leaderboard',
         '(*path)': 'catchAll'
     },
 
@@ -25,6 +27,13 @@ module.exports = Router.extend({
         }
         app.trigger('page', new PlayPage());
     },
+    
+    /*leaderboard: function () {
+        app.trigger('page', new LeaderBoardPage({
+            collection: app.players,
+            model: app.player
+        }));
+    },*/
 
     catchAll: function () {
         this.redirectTo('');

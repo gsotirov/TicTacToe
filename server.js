@@ -39,6 +39,14 @@ app.use(helmet.nosniff());
 app.set('view engine', 'jade');
 
 // -----------------
+// Set up our little demo API
+// -----------------
+/*var api = require('./playersApi');
+app.get('/api/players', api.list);
+app.post('/api/players', api.add);*/
+
+
+// -----------------
 // Set our client config cookie
 // -----------------
 app.use(function (req, res, next) {

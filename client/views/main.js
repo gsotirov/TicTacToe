@@ -38,7 +38,7 @@ module.exports = View.extend({
                 // add a class specifying it's active
                 dom.addClass(newView.el, 'active');
 
-                // store an additional reference, just because
+                // store an additional reference, just because...
                 app.currentPage = newView;
             }
         });
