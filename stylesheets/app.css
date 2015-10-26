@@ -103,12 +103,12 @@ body {
   text-align: center;
   font-size: 60px;
 }
-.game-cell.sign-0:before {
+.game-cell.sign-zero:before {
   background: url("images/zero.png");
   background-size: 100px 100px;
   content: '';
 }
-.game-cell.sign-1:before {
+.game-cell.sign-cross:before {
   background: url("images/cross.png");
   background-size: 100px 100px;
   content: '';
@@ -184,12 +184,12 @@ label {
   text-align: center;
   font-size: 12px;
 }
-.stats ul li .mk.sign-0:before {
+.stats ul li .mk.sign-zero:before {
   background: url("images/zero.png");
   background-size: 30px;
   content: '';
 }
-.stats ul li .mk.sign-1:before {
+.stats ul li .mk.sign-cross:before {
   background: url("images/cross.png");
   background-size: 30px;
   content: '';

@@ -38,13 +38,13 @@ module.exports = PageView.extend({
                 
                 players.add(new Player({
                     name: data.player0,
-                    mark: app.MARK_ZERO,
+                    mark: app.marks[0],
                     score: 0
                 }));
                 
                 players.add(new Player({
                     name: data.player1,
-                    mark: app.MARK_CROSS,
+                    mark: app.marks[1],
                     score: 0
                 }));
                 

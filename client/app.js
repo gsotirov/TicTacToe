@@ -42,11 +42,12 @@ app.extend({
             trigger: true
         });
     },
+    marks: { 
+        0 : 'zero', 
+        1 : 'cross' 
+    },
     // Declares the Draw count, which will increment every time players draw.
-    drawCount: 0,
-    // Declares the two possible signs/marks('0' and 'X') as 0 and 1 for easier further use.
-    MARK_ZERO: 0,
-    MARK_CROSS: 1
+    drawCount: 0
 });
 
 // run it on domReady

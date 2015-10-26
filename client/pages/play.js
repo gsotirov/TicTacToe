@@ -13,46 +13,35 @@ module.exports = PageView.extend({
     pageTitle: 'Play',
     template: templates.pages.play,
     // Sets an initial value for the activePlayer. It changes depending on which player's turn is.
-    activePlayer: 0,
-    // Counts the moves made, so Draw can be handled properly.
-    moveCount: 0,
-    
+    activePlayer: 0, 
     // Attaches events to the gameField for setting a sign on player click and for starting a NewGame.
     events: {
-        'click #game-field .game-cell.is-empty' : 'setSign',
-        'click #newGame' : 'newGame'
+        'click [data-hook=cell]' : 'setSign',
+        'click [data-hook=new-game]' : 'newGame'
     },
-    
+    // Render the template...
     render: function () {
         
-        this.isGameComplete = false;
+        this.isGameComplete = false; // Flags if the game is complete.
         this.player0 = app.players.at(0);
         this.player1 = app.players.at(1);
-        this.marks = {
-            0: app.MARK_ZERO,
-            1: app.MARK_CROSS
-        };
         this.drawCount = app.drawCount;
         this.message = 'It\'s ' + app.players.at(this.activePlayer).name + '\'s turn!';
         this.messageClass = 'alert-info';
+        this.moveCount = 0;
         
-        this.gameField = {};
-        
-        for(var x = 0; x <= 2; x++) {
-            this.gameField[x] = {};
-            for(var y = 0; y <= 2; y++) {
-                this.gameField[x][y] = null;
-            }
-        }
+        // Draw the Game Field...
+        this.gameField = this.drawGameField();
+
         this.renderWithTemplate(this);
-        this.gameFieldElem = this.el.querySelector('#gameField');
         
         return this;
     },
     props: {
         message: ['string'],
         messageClass: ['string'],
-        isGameComplete: ['boolean']
+        isGameComplete: ['boolean'],
+        moveCount: ['number']
     },
     bindings: {
         message: {
@@ -66,7 +55,23 @@ module.exports = PageView.extend({
         isGameComplete: {
             type: 'toggle',
             selector: '#newGame'
+        },
+        moveCount: {
+            type: 'text',
+            hook: 'move-count'
         }
+    },
+    drawGameField: function () {
+        var field = {};
+
+        for(var x = 0; x <= 2; x++) {
+            field[x] = {};
+            for(var y = 0; y <= 2; y++) {
+                field[x][y] = null;
+            }
+        }
+
+        return field;
     },
     setSign: function (ev) {
         
@@ -76,18 +81,14 @@ module.exports = PageView.extend({
         }
         
         ev.target.classList.remove('is-empty');
-        ev.target.classList.add('sign-' + this.marks[this.activePlayer]);
+        ev.target.classList.add('sign-' + app.marks[self.activePlayer]);
         
         var coordinates = ev.target.dataset;
-        
-        //console.log(coordinates);
         
         var xPos = coordinates['xpos'],
             yPos = coordinates['ypos'];
         
         self.gameField[yPos][xPos] = self.activePlayer;
-        
-        //console.log(this.gameField[xPos][yPos]);
         
         var gameEnded = this.checkForWinner(xPos, yPos);
         
@@ -110,6 +111,10 @@ module.exports = PageView.extend({
         var self = this;
         var size = 3;
         this.moveCount++;
+
+        if(this.moveCount < 3) {
+            return;
+        }
         
         var winningRow = (function (xPos, yPos) {
             for(var i = 0; i < size; i++) {
@@ -183,7 +188,7 @@ module.exports = PageView.extend({
         var scoreBoard = this.queryByHook('score-player' + ap);
         scoreBoard.innerText = player.score;
         
-        this.message = 'Player ' + player.name + ' wins!';
+        this.message = player.name + ' wins!';
         this.messageClass = 'alert-success';
     },
     handleDraw: function () {

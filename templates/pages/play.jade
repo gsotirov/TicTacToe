@@ -9,7 +9,7 @@ section.page-play
             each row, yPos in gameField
                 .gameRow.clearfix
                     each field, xPos in row
-                        .game-cell.is-empty(data-ypos=yPos, data-xpos=xPos)
+                        .game-cell.is-empty(data-ypos=yPos, data-xpos=xPos, data-hook="cell")
         .stats.pull-left
             ul.player-info
                 li.relative
@@ -29,9 +29,11 @@ section.page-play
                 li
                     span.inline-block #{player1.name}'s wins:
                     span.inline-block(data-hook="score-player1")= player1.score
-                
+                li
+                    span.inline-block Moves:
+                    span.inline-block(data-hook="move-count")= moveCount
             p.text-center
-                button#newGame.btn.btn-primary New Game
+                button#newGame.btn.btn-primary(data-hook="new-game") New Game
                     
 
 
